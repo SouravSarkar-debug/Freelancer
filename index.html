@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sourav Sarkar | Professional Scriptwriter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0F1C3F;
+            --secondary: #C6A769;
+            --light: #F8F5F0;
+            --dark: #121212;
+            --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            background: rgba(15, 28, 63, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        #hero {
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(rgba(15, 28, 63, 0.7), rgba(15, 28, 63, 0.7)), 
+                        url('https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-btns .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+        
+        .hero-btns .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background: white;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        
+        .about-img {
+            flex: 1;
+            position: relative;
+            min-height: 500px;
+        }
+        
+        .about-img img {
+            position: absolute;
+            width: 70%;
+            height: 80%;
+            object-fit: cover;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img:first-child {
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .about-img img:last-child {
+            bottom: 0;
+            right: 0;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            margin-bottom: 30px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .skill-tag {
+            background: var(--light);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* ===== WORK SECTION ===== */
+        #work {
+            background: var(--light);
+        }
+        
+        .work-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .work-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: rgba(15, 28, 63, 0.9);
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .work-item:hover .work-overlay {
+            bottom: 0;
+        }
+        
+        .work-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .work-category {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .work-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* ===== TESTIMONIALS SECTION ===== */
+        #testimonials {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        #testimonials .section-title {
+            color: white;
+        }
+        
+        #testimonials .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-item {
+            padding: 0 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-position {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 80px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            margin-right: 20px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-text a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 1200px) {
+            .about-container,
+            .contact-container {
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-container,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                min-height: 400px;
+                width: 100%;
+                margin-bottom: 50px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 1001;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1002;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .about-img {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Sourav<span>Sarkar</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Professional Scriptwriter</span>
+                <h1 class="hero-title">Crafting Stories That Resonate</h1>
+                <p class="hero-text">Specializing in character-driven narratives for film, television, and digital media. My scripts have been produced  to many customers.</p>
+                <div class="hero-btns">
+                    <a href="#work" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src=https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-a400-61f7-a2ea-238e363afea5/raw?se=2025-07-17T13%3A37%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=728b6103-5397-56e6-992e-cbf6e514a3d7&skoid=c953efd6-2ae8-41b4-a6d6-34b1475ac07c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-17T04%3A22%3A29Z&ske=2025-07-18T04%3A22%3A29Z&sks=b&skv=2024-08-04&sig=1ql6kfxUjCz36tVvfW0gX6F9XRuzqGScZHyaJJvHcz0%3D alt="Sourav Sarkar">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80" alt="Writing Sample">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">About Me</h2>
+                <p>With over a decade of professional writing experience, I've developed a unique voice that blends emotional depth with commercial appeal. My background in theater and film production gives me a comprehensive understanding of what makes stories work across different mediums.</p>
+                <p>When I'm not writing, you can find me mentoring emerging writers through the Scriptwriters Foundation or hiking the trails near my home in Colorado.</p>
+                
+                <div class="skills">
+                    <span class="skill-tag">Feature Films</span>
+                    <span class="skill-tag">TV Drama</span>
+                    <span class="skill-tag">Web Series</span>
+                    <span class="skill-tag">Documentary</span>
+                    <span class="skill-tag">Branded Content</span>
+                    <span class="skill-tag">Script Consulting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work">
+        <div class="container">
+            <h2 class="section-title">Selected Works</h2>
+            <div class="work-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="film">Films</button>
+                <button class="filter-btn" data-filter="tv">TV</button>
+                <button class="filter-btn" data-filter="digital">Digital</button>
+            </div>
+            
+            <div class="work-grid">
+                <!-- Project 1 -->
+                <div class="work-item" data-category="film awards">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="The Last Light">
+                    <div class="work-overlay">
+                        <span class="work-category">Feature Film</span>
+                        <h3 class="work-title">The Last Light</h3>
+                        <p>A grieving astrophysicist discovers messages from her late husband in cosmic radiation patterns.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="work-item" data-category="tv">
+                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="City of Shadows">
+                    <div class="work-overlay">
+                        <span class="work-category">TV Series</span>
+                        <h3 class="work-title">City of Shadows</h3>
+                        <p>1920s crime drama following a female detective navigating corruption in Prohibition-era Chicago.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="work-item" data-category="digital">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ctrl+Alt+Del">
+                    <div class="work-overlay">
+                        <span class="work-category">Web Series</span>
+                        <h3 class="work-title">Ctrl+Alt+Del</h3>
+                        <p>Dark comedy about tech startup employees who discover their boss is an AI.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="work-item" data-category="film awards">
+                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="The Silent Shore">
+                    <div class="work-overlay">
+                        <span class="work-category">Short Film</span>
+                        <h3 class="work-title">The Silent Shore</h3>
+                        <p>WWII drama about a deaf fisherman who becomes an unlikely hero in the French Resistance.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="work-item" data-category="digital">
+                    <img src="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Authentic">
+                    <div class="work-overlay">
+                        <span class="work-category">Branded Content</span>
+                        <h3 class="work-title">Authentic</h3>
+                        <p>Documentary series for Patagonia about sustainable fashion pioneers.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="work-item" data-category="tv awards">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1459&q=80" alt="Midnight Radio">
+                    <div class="work-overlay">
+                        <span class="work-category">Limited Series</span>
+                        <h3 class="work-title">Midnight Radio</h3>
+                        <p>Supernatural thriller about a late-night radio host who receives calls from the afterlife.</p>
+                        <a href="404.html" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Sourav took our vague concept and transformed it into a gripping limited series that attracted A-list talent. Her ability to find the emotional core of a story is unmatched."</p>
+                    <h4 class="testimonial-author">Michael Chen</h4>
+                    <p class="testimonial-position">Head of Development, Horizon Pictures</p>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"We've worked with many writers, but none who deliver such consistently polished drafts on deadline. The Silent Shore script arrived ready for production with no revisions needed."</p>
+                    <h4 class="testimonial-author">Sophie Laurent</h4>
+                    <p class="testimonial-position">Producer, The Sky's Star</p>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Our branded content campaign succeeded because Alexandra understood our brand voice immediately. She elevated what could have been corporate videos into compelling short films."</p>
+                    <h4 class="testimonial-author">David Park</h4>
+                    <p class="testimonial-position">Creative Director, Patagonia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h3 class="section-title">Get In Touch</h3>
+                
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:dasamudasanudas@gmail.com">dasanudasanudas@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Based In</h4>
+                            <p>Kalyani, Nadia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>Follow Me</h4>
+                <div class="social-links">
+                    <a href="404.html" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="404.html" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="404.html" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="" disabled selected>Project Type</option>
+                            <option>Feature Film</option>
+                            <option>Television</option>
+                            <option>Web Series</option>
+                            <option>Branded Content</option>
+                            <option>Script Consultation</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">Sourav<span>Sarkar</span></a>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="copyright">© 2025 Sourav Sarkar. All Rights Reserved.
+         Developed by his ownself.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Work Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                // Filter items
+                workItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category.includes(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
